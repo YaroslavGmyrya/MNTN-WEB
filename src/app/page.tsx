@@ -2,20 +2,18 @@
 import Hero from "@/components/Hero";
 import MainContent from "@/components/MainContent";
 import Card from "@/components/Card";
-import Footer from "@/components/Footer"
-import { useInView } from 'react-intersection-observer'
-import { useState,useEffect} from "react";
-import React from "react";
+import Footer from "@/components/Footer";
+import { useState, useEffect } from "react";
+import React, { useRef } from "react";
 
-
-
-const index = () => {
+const IndexPage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [allowInViewChange, setAllowInViewChange] = useState(true); 
+  const [allowInViewChange, setAllowInViewChange] = useState(true);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   const handleInViewChange = (id: string) => {
     if (allowInViewChange && id) {
-      if (id === '0Start') {
+      if (id === "0Start") {
         setActiveIndex(0);
       } else {
         setActiveIndex(parseInt(id));
@@ -29,20 +27,20 @@ const index = () => {
 
     if (id) {
       setActiveIndex(parseInt(id));
-      setAllowInViewChange(false); 
-      setTimeout(() => setAllowInViewChange(true), 500); 
+      setAllowInViewChange(false);
+      setTimeout(() => setAllowInViewChange(true), 500);
     }
   };
 
   useEffect(() => {
-    setActiveIndex(0)
-  },[])
+    setActiveIndex(0);
+  }, []);
 
   return (
     <>
       <Hero
         onClick={handleOnClick}
-        ref={React.createRef()}
+        ref={heroRef}
         SetActiveIndex={setActiveIndex}
         activeIndex={activeIndex}
         onInViewChange={handleInViewChange}
@@ -85,4 +83,4 @@ const index = () => {
   );
 };
 
-export default index
+export default IndexPage;
