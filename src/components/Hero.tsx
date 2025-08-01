@@ -126,4 +126,6 @@ const Hero = forwardRef<HTMLDivElement, Ifunc>(
   }
 );
 
+Hero.displayName = "Hero";
+
 export default Hero;

@@ -1,6 +1,6 @@
 import React from "react";
 
-type MainContentProps = React.PropsWithChildren<{}>;
+type MainContentProps = React.PropsWithChildren;
 
 const MainContent: React.FC<MainContentProps> = ({ children }) => {
     return (
